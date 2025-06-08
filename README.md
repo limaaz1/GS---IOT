@@ -1,3 +1,6 @@
+**Link do Projeto:**
+https://wokwi.com/projects/433059990569150465
+
 ****Monitoramento de Vibração e Temperatura com ESP32****
 
 Este projeto tem como objetivo monitorar vibração e temperaturas elevadas utilizando o ESP32, um sensor de vibração, um sensor de temperatura (simulado via pino analógico), um botão de emergência e um buzzer. As informações são enviadas via MQTT, e tudo pode ser simulado diretamente no Wokwi.
