@@ -1,0 +1,224 @@
+[
+    {
+        "id": "b43850148821360c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a88f68b30205d2f1",
+        "type": "mqtt in",
+        "z": "b43850148821360c",
+        "name": "",
+        "topic": "evacuacao/zona1/alerta",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "e341cf6102e8d341",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 120,
+        "y": 1260,
+        "wires": [
+            [
+                "f4eb0f78339bfd03"
+            ]
+        ]
+    },
+    {
+        "id": "f4eb0f78339bfd03",
+        "type": "json",
+        "z": "b43850148821360c",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 310,
+        "y": 1260,
+        "wires": [
+            [
+                "ec9e90e3bdc2e9fb",
+                "6c09c0657c243c27",
+                "1f21a2fc0c2c91f2",
+                "74bf776aafe8a6cc"
+            ]
+        ]
+    },
+    {
+        "id": "ec9e90e3bdc2e9fb",
+        "type": "ui_gauge",
+        "z": "b43850148821360c",
+        "name": "Gauge Vibração",
+        "group": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "vibração",
+        "label": "units",
+        "format": "{{payload.vibracao}}",
+        "min": 0,
+        "max": "4095",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 620,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "6c09c0657c243c27",
+        "type": "debug",
+        "z": "b43850148821360c",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "3717f074521dc425",
+        "type": "ui_text_input",
+        "z": "b43850148821360c",
+        "name": "",
+        "label": "Botão alerta",
+        "tooltip": "Digite o comando de alerta aqui",
+        "group": "0ca5469f187b745a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 730,
+        "y": 1260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "702b7b04e3150ac9",
+        "type": "ui_text_input",
+        "z": "b43850148821360c",
+        "name": "Alerta ",
+        "label": "Alerta",
+        "tooltip": "",
+        "group": "0ca5469f187b745a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 730,
+        "y": 1320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1f21a2fc0c2c91f2",
+        "type": "function",
+        "z": "b43850148821360c",
+        "name": "function 1",
+        "func": "\nmsg.payload = msg.payload.botao ? \"PRESSIONADO\" : \"Normal\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 1260,
+        "wires": [
+            [
+                "3717f074521dc425"
+            ]
+        ]
+    },
+    {
+        "id": "74bf776aafe8a6cc",
+        "type": "function",
+        "z": "b43850148821360c",
+        "name": "function 2",
+        "func": "msg.payload = msg.payload.alerta ? \"ALERTA ATIVO\" : \"Normal\";\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 1320,
+        "wires": [
+            [
+                "702b7b04e3150ac9"
+            ]
+        ]
+    },
+    {
+        "id": "e341cf6102e8d341",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "0ca5469f187b745a",
+        "type": "ui_group",
+        "name": "Alerta",
+        "tab": "",
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    }
+]
