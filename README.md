@@ -5,37 +5,33 @@ https://wokwi.com/projects/433059990569150465
 
 Este projeto tem como objetivo monitorar vibração e temperaturas elevadas utilizando o ESP32, um sensor de vibração, um sensor de temperatura (simulado via pino analógico), um botão de emergência e um buzzer. As informações são enviadas via MQTT, e tudo pode ser simulado diretamente no Wokwi.
 
-**Funcionalidades**:
+**Descrição completa da solução:**
 
-Leitura de vibração com sensor analógico.
+O sistema simula um cenário de segurança para ambientes onde tremores e temperaturas altas possam indicar risco de acidentes ou incêndios. Os sensores coletam dados em tempo real e enviam para um broker MQTT. Um botão de emergência permite o envio manual de alerta, e um buzzer é ativado em caso de situações críticas.
 
-Conversão do valor de vibração para uma escala sísmica (semelhante à Escala Richter).
+A aplicação se divide nas seguintes partes:
 
-Classificação da intensidade do tremor com mensagens de alerta (de "Muito leve" a "Extremo").
+Leitura da vibração: converte o sinal analógico em uma escala equivalente à Escala Richter.
 
-Leitura da temperatura e verificação de risco de incêndio.
+Classificação de risco: avalia o nível de perigo com base na vibração medida.
 
-Acionamento do buzzer em caso de risco elevado.
+Leitura da temperatura: detecta valores acima de 120 °C como possíveis riscos de incêndio.
 
-Botão de emergência que força o envio imediato de alerta.
+Alerta sonoro: o buzzer é acionado automaticamente em caso de perigo.
 
-Envio de dados formatados em JSON para um tópico MQTT.
+Envio de dados: todas as leituras e estados são enviados via MQTT em formato JSON.
 
-**Como funciona**:
+**Instruções de configuração, execução e testes:**
 
-O ESP32 realiza leituras constantes dos sensores de vibração e temperatura. A vibração é convertida para uma escala sísmica para facilitar a interpretação do nível de risco. Se a temperatura ultrapassar 120 graus Celsius ou o botão for pressionado, o buzzer é ativado e um alerta é disparado.
+Acesse o projeto no Wokwi (link do projeto a ser inserido).
 
-As informações são publicadas no tópico MQTT a cada 2 segundos, contendo:
+Configure os tópicos MQTT no broker público HiveMQ (broker.hivemq.com).
 
-valor da vibração
+Instale as bibliotecas necessárias na Arduino IDE: WiFi, PubSubClient e ArduinoJson.
 
-temperatura atual
+Faça o upload do código no ESP32.
 
-nível estimado do tremor
-
-se o botão foi pressionado
-
-se o buzzer foi ativado
+Abra o monitor serial para acompanhar as leituras.
 
 **Resultados**:
 
