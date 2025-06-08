@@ -23,11 +23,11 @@ Envio de dados: todas as leituras e estados são enviados via MQTT em formato JS
 
 **Instruções de configuração, execução e testes:**
 
-Acesse o projeto no Wokwi (link do projeto a ser inserido).
+Acesse o projeto no Wokwi
 
 Configure os tópicos MQTT no broker público HiveMQ (broker.hivemq.com).
 
-Instale as bibliotecas necessárias na Arduino IDE: WiFi, PubSubClient e ArduinoJson.
+Instale as bibliotecas necessárias pelo Wokwi: WiFi, PubSubClient e ArduinoJson.
 
 Faça o upload do código no ESP32.
 
@@ -43,9 +43,9 @@ Simulador Wokwi
 
 ESP32
 
-Sensor de vibração analógico (simulado)
+Sensor de vibração analógico 
 
-Sensor de temperatura (simulado)
+Sensor de temperatura 
 
 Botão de emergência
 
@@ -54,8 +54,6 @@ Buzzer
 Protocolo MQTT
 
 Broker público HiveMQ (broker.hivemq.com)
-
-Arduino IDE
 
 **Bibliotecas**:
 
@@ -68,5 +66,7 @@ ArduinoJson.h
 **Integrantes do grupo**:
 
 Guilherme Jesus Lima / RM: 555002
+
 Jean Roberto Gomes / RM: 94418
+
 Lucas de Melo Pinheiro Pinho / RM: 558791
